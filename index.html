@@ -3,17 +3,73 @@
 
 <head>
     <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:;base64,=">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <title>Gemini Live Demo</title>
 
     <style>
-        #videoElement {
-            width: 320px;
-            height: 240px;
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1A1A1A;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            max-width: 1200px;
+            background-color: #1E2E25;
+            border-radius: 20px;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .main-content {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            gap: 20px;  /* Adds space between elements */
+        }
+
+        .videoElement, .branding-section {
+            flex: 1;
+            background-color: #22332D;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            height: auto; /* Adjust based on content */
+            max-width: 50%; /* Ensure equal size */
+            box-sizing: border-box;
+        }
+        .branding-section {
+            font-size: 1.5em;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            color: #A1A1A1;
+            text-align: center;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
             border-radius: 20px;
         }
+
 
         #canvasElement {
             display: none;
@@ -33,17 +89,11 @@
 </head>
 
 <body>
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-            <!-- Title -->
-            <span class="mdl-layout-title">Gemini Live Demo</span>
-        </div>
-    </header>
-    <main class="mdl-layout__content">
-        <div class="page-content">
+<div class="container">
+    <div class="main-content">
+        <div class="videoElement">
+            <video id="videoElement" autoplay></video>
             <div class="demo-content">
-                <!-- Voice Control Buttons -->
                 <div class="button-group">
                     <button id="startButton"
                             class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
@@ -54,17 +104,15 @@
                         <i class="material-icons">mic_off</i>
                     </button>
                 </div>
-
-                <!-- Video Element -->
-                <video id="videoElement" autoplay></video>
-
-                <!-- Hidden Canvas -->
                 <canvas id="canvasElement"></canvas>
-                <!-- Text Output -->
                 <div id="chatLog"></div>
             </div>
         </div>
-    </main>
+
+        <div class="branding-section">
+            Gemini Live Demo
+        </div>
+    </div>
 </div>
 
 <script defer>
